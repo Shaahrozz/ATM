@@ -13,7 +13,7 @@ if (pin.a == myPin) {
             name: "a",
             type: "list",
             message: "Select your option \n",
-            choices: ["Balance Inquiry", "Withdraw", "Deposit", "Exit"]
+            choices: ["Balance Inquiry", "Withdraw", "Fast_Cash", "Exit"]
         }]);
     switch (select.a) {
         case "Balance Inquiry":
@@ -33,13 +33,32 @@ if (pin.a == myPin) {
                 console.log(`Your Remaining balance is ${myBal}`);
             }
             break;
-        case "Deposit":
-            let deposit = await inquirer.prompt([{
+        case "Fast_Cash":
+            let fastCash = await inquirer.prompt([{
                     name: "a",
-                    type: "number",
-                    message: "Enter amount to deposit \n"
+                    type: "list",
+                    message: "Select amount to widraw \n",
+                    choices: [1000, 2000, 5000, 10000]
                 }]);
-            console.log('Now your balacne is', deposit.a + myBal);
+            if (fastCash.a > myBal) {
+                console.log("Insufficient balance");
+            }
+            else if (fastCash.a === 1000) {
+                myBal = myBal - fastCash.a;
+                console.log(`Your Remaining balance is ${myBal}`);
+            }
+            else if (fastCash.a === 2000) {
+                myBal = myBal - fastCash.a;
+                console.log(`Your Remaining balance is ${myBal}`);
+            }
+            else if (fastCash.a === 5000) {
+                myBal = myBal - fastCash.a;
+                console.log(`Your Remaining balance is ${myBal}`);
+            }
+            else if (fastCash.a === 10000) {
+                myBal = myBal - fastCash.a;
+                console.log(`Your Remaining balance is ${myBal}`);
+            }
     }
 }
 else {
